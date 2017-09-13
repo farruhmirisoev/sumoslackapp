@@ -51,8 +51,8 @@ router.get('/slack', function(req, res){
 	          if(JSON.parse(body).error == 'missing_scope') {
 	            res.send('missing_scope');
 	          } else {
-	            let team = JSON.parse(body).team.domain;
-	            res.redirect('http://' +team+ '.slack.com');
+	            // let team = JSON.parse(body).team.domain;
+	            // res.redirect('http://' +team+ '.slack.com');
 	             // res.redirect('http://farrukhworkspace.slack.com');
 	          }
 	        }
