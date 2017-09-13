@@ -53,7 +53,7 @@ router.get('/slack', function(req, res){
 	          } else {
 	            // let team = JSON.parse(body).team.domain;
 	            // res.redirect('http://' +team+ '.slack.com');
-	             // res.redirect('http://farrukhworkspace.slack.com');
+	             res.redirect('http://slack.com');
 	          }
 	        }
 	      });
