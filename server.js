@@ -115,10 +115,10 @@ function handleQueries(q, res) {
     				if(amount>59 && amount<=119){
 						res.send('Big plan for $119/mo: Discount Codes, Enterprise Integ., Integrations, VIP Support, Pro Display Rules, Pro Insights, Remove Branding, All Templates, A/B Testing, Sites Included:9, Monthly Visits:Up to 500k');
     				}
-    				if(amount>119){
+    				if(amount>119 && amount<1000000){
     					res.send('Check out our ***SUMO plan***: Live Optimizations, Discount Codes, Enterprise Integ., Integrations, VIP Support, Pro Display Rules, Pro Insights, Remove Branding, All Templates, A/B Testing, Sites Included:Unlimited, Monthly Visits:Unlimited, as for the price details please visit http://page.sumo.com/sumo-size-me');
     				}
-    				if(amount>1000000){
+    				if(amount>=1000000){
     					res.send('are you married?');
     				}
     			}
