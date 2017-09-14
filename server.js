@@ -27,10 +27,8 @@ router.get('/', function(req, res) {
 });
 
 router.post('/pickplan', function(req, res) {
-	console.log("Command received")
-	console.log(req);
-	handleQueries(req.body, res);
-	res.send("Hi sumo")
+	console.log("Command received")	
+	handleQueries(req.body, res);	
 });
 
 
@@ -88,8 +86,14 @@ function handleQueries(q, res) {
     	let planparam = q.text; 
     	if(planparam == 'free'){
     		res.send('You gonna like our Basic plan: Monthly Visits: Limited, Sites Included:1, A/B Testing, All Templates');
-    	}   
+    	} 
+    	else{
+    		res.send('its not free')
+    	}  
     		
+	}
+	else{
+		res.send('no text');
 	}
 
 }
