@@ -31,6 +31,11 @@ router.post('/pickplan', function(req, res) {
 	handleQueries(req.body, res);	
 });
 
+router.get('/test', function(req, res) {
+	console.log("Command received")	
+	handleQueries(req.body, res);	
+});
+
 
 router.get('/slack', function(req, res){ 
 	let data = {form: { 
@@ -77,39 +82,41 @@ console.log('Magic happens on port ' + port);
 // BASE SETUP
 // =============================================================================
 
-var mongoose   = require('mongoose');
-mongoose.connect('mongodb://farruh:123@ds025583.mlab.com:25583/sumoslack'); // connect to our database
+// var mongoose   = require('mongoose');
+// mongoose.connect('mongodb://farruh:123@ds025583.mlab.com:25583/sumoslack'); // connect to our database
 
-function isInteger(x) {
-    return x % 1 === 0;
-}
+// function isInteger(x) {
+//     return x % 1 === 0;
+// }
 
 function handleQueries(q, res) {
 	if (q.text) {
+	
     	let planparam = q.text; 
+    	
     	if(planparam == 'free'){
     		res.send('FREE? Well we got our Basic plan: Monthly Visits: Limited, Sites Included:1, A/B Testing, All Templates');
     	} 
     	if(planparam == 'all'){
-    		res.send('Ready? ***SUMO plan***: Live Optimizations, Discount Codes, Enterprise Integ., Integrations, VIP Support, Pro Display Rules, Pro Insights, Remove Branding, All Templates, A/B Testing, Sites Included:Unlimited, Monthly Visits:Unlimited, as for the pice - go to http://page.sumo.com/sumo-size-me');
+    		res.send('Ready? ***SUMO plan***: Live Optimizations, Discount Codes, Enterprise Integ., Integrations, VIP Support, Pro Display Rules, Pro Insights, Remove Branding, All Templates, A/B Testing, Sites Included:Unlimited, Monthly Visits:Unlimited, as for the price details please visit http://page.sumo.com/sumo-size-me');
     	}
-    	if(planparam == '$29'){
+
     		firstchar = planparam.charAt(0);
     		if(firstchar == '$'){
     			let price = planparam.split('$');
     			let amount = price[1];
-    			if(isIntiger(amount)){
-    				if(amount >= 29){
+    			if(amount % 1 === 0){
+    				if(amount <= 29){
     					res.send('Small plan for $29/mo: Integrations, VIP Support, Pro Display Rules, Pro Insights, Remove Branding, All Templates, A/B Testing, Sites Included:1, Monthly Visits:Up to 5k');
     				}
-    				if(amount>=59){
+    				if(amount>29 && amount<=59){
 						res.send('Medium plan for $59/mo: Integrations, VIP Support, Pro Display Rules, Pro Insights, Remove Branding, All Templates, A/B Testing, Sites Included:3, Monthly Visits:Up to 50k');
     				}
-    				if(amount>=119 && amount<200){
+    				if(amount>59 && amount<=119){
 						res.send('Big plan for $119/mo: Discount Codes, Enterprise Integ., Integrations, VIP Support, Pro Display Rules, Pro Insights, Remove Branding, All Templates, A/B Testing, Sites Included:9, Monthly Visits:Up to 500k');
     				}
-    				if(amount>=200 && amount<1000000){
-    					res.send('Check out our ***SUMO plan***: Live Optimizations, Discount Codes, Enterprise Integ., Integrations, VIP Support, Pro Display Rules, Pro Insights, Remove Branding, All Templates, A/B Testing, Sites Included:Unlimited, Monthly Visits:Unlimited, as for the pice - go to http://page.sumo.com/sumo-size-me');
+    				if(amount>119){
+    					res.send('Check out our ***SUMO plan***: Live Optimizations, Discount Codes, Enterprise Integ., Integrations, VIP Support, Pro Display Rules, Pro Insights, Remove Branding, All Templates, A/B Testing, Sites Included:Unlimited, Monthly Visits:Unlimited, as for the price details please visit http://page.sumo.com/sumo-size-me');
     				}
     				if(amount>1000000){
     					res.send('are you married?');
@@ -119,16 +126,14 @@ function handleQueries(q, res) {
     				res.send('try the example: /pickplan $123');
     			}
 
-    		}
-    		res.send('You gonna like our Basic plan: Monthly Visits: Limited, Sites Included:1, A/B Testing, All Templates');
-    	} 
-    	else{
-    		res.send('try like this /pickplan free, or /pickplan $120mo, or /pickplan 50k users')
-    	}  
+    		}   		    	 
+	    	else{
+	    		res.send('try like this /pickplan free, /pickplan $299 , /pickplan all, /pickplan $1000000')
+	    	}  
     		
 	}
 	else{
-		res.send('try like this /pickplan free, or /pickplan $120m, or pickplan/ 50k users')
+		res.send('try like this /pickplan free, /pickplan $299 , /pickplan all, /pickplan $1000000')
 	}
 
 }
