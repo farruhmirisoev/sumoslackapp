@@ -29,6 +29,7 @@ router.get('/', function(req, res) {
 router.post('/pickplan', function(req, res) {
 	console.log("Command received")
 	console.log(req);
+	handleQueries(req.body, res);
 	res.send("Hi sumo")
 });
 
@@ -80,3 +81,15 @@ console.log('Magic happens on port ' + port);
 
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://farruh:123@ds025583.mlab.com:25583/sumoslack'); // connect to our database
+
+
+function handleQueries(q, res) {
+	if (q.text) {
+    	let planparam = q.text; 
+    	if(planparam == 'free'){
+    		res.send('You gonna like our Basic plan: Monthly Visits: Limited, Sites Included:1, A/B Testing, All Templates');
+    	}   
+    		
+	}
+
+}
