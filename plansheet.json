@@ -1,0 +1,40 @@
+{
+    "attachments": [
+        {
+            "fallback": "Required plain-text summary of the attachment.",
+            "color": "#36a64f",
+            "pretext": "Oh, you're gonna love this plan:",           
+            "title": "SUMO",
+            "title_link": "https://sumo.com/pricing",
+            "fields": [
+                {
+                    "title": ":white_check_mark: Live Optimizations"
+                },				                {
+                    "title": ":white_check_mark: Discount Codes"
+                },				                {
+                    "title": ":white_check_mark: Enterprise Integ."
+                },				                {
+                    "title": ":white_check_mark: Integrations"
+                },				                {
+                    "title": ":white_check_mark: VIP Suppor"
+                },				                {
+                    "title": ":white_check_mark: Pro Display"
+                },                {
+                    "title": ":lock:  Pro Insights"
+                },                {
+                    "title": ":white_check_mark: Remove Branding"
+                },                {
+                    "title": ":white_check_mark: All Templates"
+                },                {
+                    "title": ":white_check_mark: A/B Testing"
+                },								                {
+                    "title": ":white_check_mark: Sites Included: Unlimited"
+                },				                {
+                    "title": ":white_check_mark: Monthly Visits: Unlimited"
+                }				  
+            ],
+            "footer": "to get the information about the price details please visit http://page.sumo.com/sumo-size-me",
+            "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png"
+        }
+    ]
+}
