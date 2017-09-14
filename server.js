@@ -37,10 +37,14 @@ router.get('/test', function(req, res) {
 });
 
 
+// auth
+
 router.get('/slack', function(req, res){ 
 	let data = {form: { 
-	client_id: process.env.SLACK_CLIENT_ID, 
-	client_secret: process.env.SLACK_CLIENT_SECRET, 
+	// client_id: process.env.SLACK_CLIENT_ID, 
+	// client_secret: process.env.SLACK_CLIENT_SECRET, 
+	client_id: "238856116306.239797713254", 
+	client_secret: "565dccd77e7350f52f2073ec1bb24973", 
 	code: req.query.code 
 	}}; 
 
@@ -55,9 +59,9 @@ router.get('/slack', function(req, res){
 	          if(JSON.parse(body).error == 'missing_scope') {
 	            res.send('missing_scope');
 	          } else {
-	            // let team = JSON.parse(body).team.domain;
-	            // res.redirect('http://' +team+ '.slack.com');
-	             res.redirect('http://slack.com');
+	            let team = JSON.parse(body).team.domain;
+	            res.redirect('http://' +team+ '.slack.com');
+	             // res.redirect('http://slack.com');
 	          }
 	        }
 	      });
